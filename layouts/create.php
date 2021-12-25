@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $fileTmp = $_FILES['image']['tmp_name'];
     $tmp = explode('.',$fileName);
     $fileExtention = end($tmp );
-    $admin = new create($title,$content,$fileName,$fileTmp,$fileExtention);
+    $admin = new Create($title,$content,$fileName,$fileTmp,$fileExtention);
     $admin->create();
 }
 ?>

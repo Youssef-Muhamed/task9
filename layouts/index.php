@@ -24,17 +24,20 @@ $result = $dbObj->doQuery($sql);
     <div class="page-header">
         <h1>Read</h1>
         <br>
+        <?php
+
+        if(isset($_SESSION['Message'])){
+            foreach ($_SESSION['Message'] as $key=>$value){
+                echo "* " . $key . ' : ' .$value;
+            }
+            unset($_SESSION['Message']);
+        }
+        ?>
     </div>
     <?php
 while($data = mysqli_fetch_assoc($result)){
     ?>
-    <?php
 
-    if(isset($_SESSION['Message'])){
-        echo $_SESSION['Message'];
-        unset($_SESSION['Message']);
-    }
-    ?>
     <div class="row my-5">
         <div class="col-sm-10">
             <div class="card " style="max-width: 90%;">
@@ -59,6 +62,8 @@ while($data = mysqli_fetch_assoc($result)){
     <?php
 }
 ?>
+    <a href='create.php' class='btn btn-success btn-lg my-3 p-3'>+ New User</a>
+
 </div>
 <!-- end .container -->
 <!-- Query (necessary for Bootstrap's JavaScript plugins) -->
